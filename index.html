@@ -1,142 +1,1011 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ΣΤΑ ΣΙΓΟΥΡΑ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ΣΤΑ ΣΙΓΟΥΡΑ | Ανακαινίσεις με Σιγουριά</title>
+  <meta name="description" content="Ανακαίνισε το ακίνητό σου χωρίς άγχος, χωρίς μπλέξιμο και με απόλυτο έλεγχο από την αρχή μέχρι το τέλος." />
+  <style>
+    :root {
+      --bg: #07111c;
+      --bg2: #0c1727;
+      --panel: rgba(255,255,255,0.06);
+      --panel-2: rgba(255,255,255,0.09);
+      --line: rgba(255,255,255,0.12);
+      --text: #eef4fb;
+      --muted: #aebcd0;
+      --gold: #d6a540;
+      --gold-2: #f2d48e;
+      --shadow: 0 20px 70px rgba(0,0,0,0.35);
+      --radius: 28px;
+      --max: 1240px;
+    }
 
-<style>
-body {
-  margin:0;
-  font-family: Arial;
-  background:#0b0f1a;
-  color:white;
-}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(214,165,64,0.16), transparent 24%),
+        linear-gradient(180deg, #050d16 0%, #07111c 30%, #0b1727 100%);
+      overflow-x: hidden;
+    }
 
-.container {
-  width:90%;
-  max-width:1100px;
-  margin:auto;
-}
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 90px 0; }
 
-/* HERO */
-.hero {
-  height:90vh;
-  display:flex;
-  align-items:center;
-  background:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85') center/cover;
-}
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: var(--gold-2);
+      background: rgba(214,165,64,0.11);
+      border: 1px solid rgba(214,165,64,0.24);
+      font-size: .9rem;
+      letter-spacing: .02em;
+    }
 
-.hero-content {
-  background:rgba(0,0,0,0.6);
-  padding:40px;
-  border-radius:10px;
-}
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      font-size: clamp(2.7rem, 6vw, 6rem);
+      line-height: .92;
+      letter-spacing: -.06em;
+    }
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.7rem);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+    }
 
-.hero h1 {
-  font-size:50px;
-}
+    .lead {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 64ch;
+    }
 
-.btn {
-  display:inline-block;
-  padding:15px 25px;
-  background:gold;
-  color:black;
-  margin-top:20px;
-  text-decoration:none;
-  font-weight:bold;
-}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: .22s ease;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); }
 
-/* SECTION */
-.section {
-  padding:80px 0;
-}
+    .btn-primary {
+      color: #1e1709;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      box-shadow: 0 12px 28px rgba(214,165,64,0.24);
+    }
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+      border-color: var(--line);
+      backdrop-filter: blur(10px);
+    }
 
-/* BEFORE AFTER */
-.ba {
-  position:relative;
-  overflow:hidden;
-}
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(6,13,22,0.72);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-inner {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 900;
+      letter-spacing: .04em;
+    }
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      display: grid;
+      place-items: center;
+      color: #1e1709;
+      font-weight: 900;
+      box-shadow: 0 10px 25px rgba(214,165,64,0.2);
+    }
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: .72rem;
+      letter-spacing: .16em;
+      font-weight: 700;
+    }
+    .brand strong {
+      display: block;
+      font-size: 1rem;
+    }
 
-.ba img {
-  width:100%;
-  display:block;
-}
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: .96rem;
+    }
+    .nav-links a:hover { color: var(--text); }
 
-.after {
-  position:absolute;
-  top:0;
-  left:0;
-  width:50%;
-  overflow:hidden;
-}
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
 
-.slider {
-  position:absolute;
-  bottom:20px;
-  width:100%;
-}
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: scale(1.06);
+      transition: opacity 1.2s ease, transform 6s ease;
+    }
+    .hero-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(5,11,18,0.88) 0%, rgba(5,11,18,0.66) 38%, rgba(5,11,18,0.45) 100%),
+        linear-gradient(180deg, rgba(5,11,18,0.20) 0%, rgba(5,11,18,0.58) 100%);
+      z-index: 1;
+    }
 
-</style>
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 120px 0 60px;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .headline span {
+      display: block;
+      overflow: hidden;
+    }
+    .headline i {
+      display: inline-block;
+      font-style: normal;
+      transform: translateY(120%);
+      opacity: 0;
+      animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards;
+    }
+    .headline span:nth-child(2) i { animation-delay: .12s; }
+    .headline span:nth-child(3) i { animation-delay: .24s; }
+
+    @keyframes rise {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .hero p {
+      margin-top: 24px;
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp .85s ease forwards;
+      animation-delay: .45s;
+    }
+
+    .hero-actions,
+    .trust-pills {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp .85s ease forwards;
+    }
+    .hero-actions { animation-delay: .58s; display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 22px; }
+    .trust-pills { animation-delay: .72s; display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .trust-pill {
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      font-size: .92rem;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 22px;
+      margin-bottom: 28px;
+    }
+    .section-head p {
+      color: var(--muted);
+      max-width: 60ch;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 26px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      box-shadow: var(--shadow);
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: rgba(214,165,64,0.14);
+      border: 1px solid rgba(214,165,64,0.22);
+      color: var(--gold-2);
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+    .card p {
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    .stats {
+      padding: 70px 0;
+      background:
+        radial-gradient(circle at top right, rgba(214,165,64,0.14), transparent 22%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .stat-box {
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .stat-number {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--gold-2);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat-label {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .project {
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      box-shadow: var(--shadow);
+    }
+
+    .project-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+    }
+    .project-head span {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .ba-wrap {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .ba-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .after {
+      width: 50%;
+      overflow: hidden;
+      border-right: 2px solid rgba(255,255,255,0.92);
+    }
+
+    .labels {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      top: 14px;
+      display: flex;
+      justify-content: space-between;
+      z-index: 4;
+    }
+
+    .label {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(8,15,24,0.58);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(8px);
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: #fff;
+      z-index: 2;
+    }
+
+    .knob {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.96);
+      color: #1b2533;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      z-index: 3;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.28);
+    }
+
+    .range {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 18px;
+      width: calc(100% - 40px);
+      appearance: none;
+      background: transparent;
+      z-index: 5;
+    }
+
+    .range::-webkit-slider-runnable-track {
+      height: 4px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 999px;
+    }
+
+    .range::-webkit-slider-thumb {
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid white;
+      margin-top: -9px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.26);
+    }
+
+    .project-copy {
+      padding: 20px 22px 24px;
+    }
+    .project-copy p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tag {
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: .88rem;
+    }
+
+    .quotes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .quote {
+      padding: 26px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      box-shadow: var(--shadow);
+    }
+    .quote p {
+      margin-bottom: 18px;
+    }
+
+    .person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #111;
+      background: linear-gradient(135deg, rgba(214,165,64,0.92), rgba(255,255,255,0.14));
+    }
+
+    .person small {
+      display: block;
+      color: var(--muted);
+    }
+
+    .cta {
+      padding: 34px;
+      border-radius: 34px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background:
+        radial-gradient(circle at top right, rgba(214,165,64,0.17), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .cta p {
+      color: var(--muted);
+      margin-top: 12px;
+      max-width: 60ch;
+    }
+
+    .cta-panel {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(7,14,23,0.44);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .cta-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .cta-line {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+    }
+    .cta-line:last-child { border-bottom: 0; }
+
+    footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 20px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .grid-3, .quotes { grid-template-columns: 1fr 1fr; }
+      .projects-grid, .cta, .stats-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .grid-3, .quotes { grid-template-columns: 1fr; }
+      .section-head { flex-direction: column; align-items: flex-start; }
+      .btn { width: 100%; }
+      .hero-actions { display: grid; }
+      .hero { min-height: 100vh; }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container hero-content">
-    <h1>Ανακαίνισε το ακίνητό σου ΣΤΑ ΣΙΓΟΥΡΑ</h1>
-    <p>
-      Χωρίς άγχος, χωρίς μπλέξιμο, χωρίς 10 διαφορετικούς μάστορες.  
-      Μία επαφή. Καθαρό πλάνο. Σοβαρό αποτέλεσμα.
-    </p>
-    <a class="btn" href="#">Ζήτησε προσφορά</a>
-  </div>
-</section>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <div class="brand-mark">Σ</div>
+        <div>
+          <small>PREMIUM ΔΙΑΧΕΙΡΙΣΗ ΑΝΑΚΑΙΝΙΣΗΣ</small>
+          <strong>ΣΤΑ ΣΙΓΟΥΡΑ</strong>
+        </div>
+      </a>
 
-<!-- TRUST -->
-<section class="section container">
-  <h2>Γιατί να μας εμπιστευτείς</h2>
-  <p>
-    Δεν αναλαμβάνουμε απλά εργασίες.  
-    Αναλαμβάνουμε την ευθύνη να γίνει σωστά.
-  </p>
-</section>
-
-<!-- BEFORE AFTER 1 -->
-<section class="section container">
-  <h2>Πριν & Μετά</h2>
-
-  <div class="ba">
-    <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858">
-    <div class="after">
-      <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85">
+      <div class="nav-links">
+        <a href="#why">Γιατί εμάς</a>
+        <a href="#stats">Στοιχεία</a>
+        <a href="#projects">Πριν & Μετά</a>
+        <a href="#contact">Επικοινωνία</a>
+      </div>
     </div>
-    <input type="range" min="0" max="100" value="50" class="slider">
-  </div>
+  </nav>
 
-</section>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80')"></div>
+        <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80')"></div>
+        <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80')"></div>
+        <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1600&q=80')"></div>
+      </div>
+      <div class="hero-overlay"></div>
 
-<!-- BEFORE AFTER 2 -->
-<section class="section container">
+      <div class="hero-content">
+        <div class="hero-copy">
+          <span class="eyebrow">Για ιδιοκτήτες και αγοραστές που θέλουν σοβαρότητα, όχι χάος</span>
 
-  <div class="ba">
-    <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba">
-    <div class="after">
-      <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858">
-    </div>
-    <input type="range" min="0" max="100" value="50" class="slider">
-  </div>
+          <h1 class="headline">
+            <span><i>Ανακαίνισε</i></span>
+            <span><i>το ακίνητό σου</i></span>
+            <span><i>στα σίγουρα.</i></span>
+          </h1>
 
-</section>
+          <p class="lead">
+            Εσύ δεν χρειάζεται να κυνηγάς μάστορες, χρονοδιαγράμματα και αμφίβολες προσφορές.
+            Αναλαμβάνουμε τη συνολική οργάνωση του έργου ώστε να έχεις καθαρή εικόνα, σοβαρή επίβλεψη
+            και αποτέλεσμα που ανεβάζει πραγματικά την αξία του ακινήτου σου.
+          </p>
 
-<script>
-document.querySelectorAll(".slider").forEach(slider => {
-  slider.addEventListener("input", function() {
-    this.previousElementSibling.style.width = this.value + "%";
-  });
-});
-</script>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Ζήτησε πρώτη εκτίμηση</a>
+            <a class="btn btn-secondary" href="#projects">Δες πριν & μετά</a>
+          </div>
 
+          <div class="trust-pills">
+            <div class="trust-pill">Μία επαφή για όλη τη διαδικασία</div>
+            <div class="trust-pill">Πλήρης επίβλεψη έργου</div>
+            <div class="trust-pill">Καθαρό πλάνο και αίσθηση ελέγχου</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Γιατί να μας εμπιστευτείς</span>
+            <h2>Δεν πουλάμε απλώς “ανακαίνιση”.<br>Πουλάμε σιγουριά.</h2>
+          </div>
+          <p>
+            Η σωστή απόφαση δεν βασίζεται μόνο στο κόστος. Βασίζεται στο αν νιώθεις ότι κάποιος σοβαρός
+            κρατάει το έργο, την επικοινωνία και το αποτέλεσμα υπό έλεγχο.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="icon">01</div>
+            <h3>Καθαρή αρχική εικόνα</h3>
+            <p>Βλέπεις από νωρίς τι έχει πραγματικό νόημα να γίνει, τι είναι προαιρετικό και πού αξίζει να επενδύσεις.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">02</div>
+            <h3>Χωρίς μπλέξιμο</h3>
+            <p>Δεν χρειάζεται να μιλάς με πολλούς διαφορετικούς ανθρώπους. Υπάρχει μία καθαρή γραμμή επικοινωνίας.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">03</div>
+            <h3>Αποτέλεσμα που φαίνεται</h3>
+            <p>Ο στόχος δεν είναι να “γίνει δουλειά”, αλλά να αναβαθμιστεί αισθητικά, λειτουργικά και εμπορικά το ακίνητο.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" id="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-box reveal">
+            <div class="stat-number" data-target="37">0</div>
+            <div class="stat-label">Υπάλληλοι</div>
+          </div>
+          <div class="stat-box reveal">
+            <div class="stat-number" data-target="21">0</div>
+            <div class="stat-label">Χρόνια ύπαρξης</div>
+          </div>
+          <div class="stat-box reveal">
+            <div class="stat-number" data-target="726">0</div>
+            <div class="stat-label">Αποπερατωμένες συνεργασίες</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Πριν & Μετά</span>
+            <h2>Από παλιό σε σύγχρονο.<br>Από ημιτελές σε ολοκληρωμένο.</h2>
+          </div>
+          <p>
+            Εδώ είναι το σημείο που ο πελάτης πρέπει να δει χειροπιαστά τη διαφορά: σπίτια, μπάνια, κουζίνες και εξωτερικοί χώροι
+            που αλλάζουν ολοκληρωτικά εικόνα.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project reveal">
+            <div class="project-head">
+              <h3>Παλιό σπίτι → σύγχρονο σπίτι</h3>
+              <span>Εσωτερικός χώρος</span>
+            </div>
+            <div class="ba-wrap" data-ba>
+              <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1400&q=80" alt="Παλιό σπίτι">
+              <div class="after">
+                <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80" alt="Σύγχρονο σπίτι">
+              </div>
+              <div class="labels">
+                <div class="label">ΠΡΙΝ</div>
+                <div class="label">ΜΕΤΑ</div>
+              </div>
+              <div class="divider"></div>
+              <div class="knob">↔</div>
+              <input class="range" type="range" min="0" max="100" value="50">
+            </div>
+            <div class="project-copy">
+              <p>Από κουρασμένο και αδιάφορο χώρο σε φωτεινή, καθαρή και premium εικόνα που ανεβάζει αμέσως την αίσθηση αξίας.</p>
+              <div class="tags">
+                <span class="tag">Σαλόνι</span>
+                <span class="tag">Φωτισμός</span>
+                <span class="tag">Αναβάθμιση εικόνας</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-head">
+              <h3>Παλιό μπάνιο → μοντέρνο μπάνιο</h3>
+              <span>Μπάνιο</span>
+            </div>
+            <div class="ba-wrap" data-ba>
+              <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1400&q=80" alt="Παλιό μπάνιο">
+              <div class="after">
+                <img src="https://images.unsplash.com/photo-1629079447777-1e605162dc8d?auto=format&fit=crop&w=1400&q=80" alt="Σύγχρονο μπάνιο">
+              </div>
+              <div class="labels">
+                <div class="label">ΠΡΙΝ</div>
+                <div class="label">ΜΕΤΑ</div>
+              </div>
+              <div class="divider"></div>
+              <div class="knob">↔</div>
+              <input class="range" type="range" min="0" max="100" value="50">
+            </div>
+            <div class="project-copy">
+              <p>Όταν το μπάνιο αλλάζει ουσιαστικά, αλλάζει αμέσως η συνολική αίσθηση ποιότητας του ακινήτου.</p>
+              <div class="tags">
+                <span class="tag">Μπάνιο</span>
+                <span class="tag">Υλικά</span>
+                <span class="tag">Σύγχρονη αισθητική</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-head">
+              <h3>Οικοδομή / ημιτελές → ολοκληρωμένο</h3>
+              <span>Εξωτερικός χώρος</span>
+            </div>
+            <div class="ba-wrap" data-ba>
+              <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1400&q=80" alt="Ημιτελές κτίσμα">
+              <div class="after">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1400&q=80" alt="Ολοκληρωμένη κατοικία">
+              </div>
+              <div class="labels">
+                <div class="label">ΠΡΙΝ</div>
+                <div class="label">ΜΕΤΑ</div>
+              </div>
+              <div class="divider"></div>
+              <div class="knob">↔</div>
+              <input class="range" type="range" min="0" max="100" value="50">
+            </div>
+            <div class="project-copy">
+              <p>Η μετάβαση από την ακατέργαστη εικόνα στην ολοκληρωμένη κατοικία είναι το πιο ισχυρό proof σοβαρής δουλειάς.</p>
+              <div class="tags">
+                <span class="tag">Οικοδομή</span>
+                <span class="tag">Ολοκλήρωση</span>
+                <span class="tag">Exterior finish</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-head">
+              <h3>Παλιά κουζίνα → μοντέρνα κουζίνα</h3>
+              <span>Κουζίνα</span>
+            </div>
+            <div class="ba-wrap" data-ba>
+              <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1400&q=80" alt="Παλιά κουζίνα">
+              <div class="after">
+                <img src="https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?auto=format&fit=crop&w=1400&q=80" alt="Μοντέρνα κουζίνα">
+              </div>
+              <div class="labels">
+                <div class="label">ΠΡΙΝ</div>
+                <div class="label">ΜΕΤΑ</div>
+              </div>
+              <div class="divider"></div>
+              <div class="knob">↔</div>
+              <input class="range" type="range" min="0" max="100" value="50">
+            </div>
+            <div class="project-copy">
+              <p>Η κουζίνα είναι από τα πρώτα πράγματα που προσέχει ο επισκέπτης, ο αγοραστής ή ο ενοικιαστής. Εκεί κερδίζεις ή χάνεις εντύπωση.</p>
+              <div class="tags">
+                <span class="tag">Κουζίνα</span>
+                <span class="tag">Modern design</span>
+                <span class="tag">Premium αίσθηση</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Λόγια που εμπνέουν εμπιστοσύνη</span>
+            <h2>Ο πελάτης δεν αγοράζει μόνο έργο.<br>Αγοράζει ηρεμία.</h2>
+          </div>
+          <p>
+            Η σωστή γλώσσα δεν είναι διακόσμηση. Είναι μέρος της πώλησης. Πρέπει να δείχνει σοβαρότητα, συνέπεια και αίσθηση ευθύνης.
+          </p>
+        </div>
+
+        <div class="quotes">
+          <article class="quote reveal">
+            <p>“Αυτό που με έκανε να νιώσω ασφάλεια ήταν ότι υπήρχε πάντα καθαρή εικόνα για το πού βρίσκεται το έργο και τι ακολουθεί.”</p>
+            <div class="person">
+              <div class="avatar">Α</div>
+              <div><strong>Αθηνά Π.</strong><small>Ιδιοκτήτρια διαμερίσματος</small></div>
+            </div>
+          </article>
+
+          <article class="quote reveal">
+            <p>“Δεν χρειάστηκε να μπω στη διαδικασία να μιλήσω με πολλούς διαφορετικούς ανθρώπους. Αυτό μόνο του άξιζε πολλά.”</p>
+            <div class="person">
+              <div class="avatar">Ν</div>
+              <div><strong>Νίκος Μ.</strong><small>Αγοραστής ακινήτου</small></div>
+            </div>
+          </article>
+
+          <article class="quote reveal">
+            <p>“Το αποτέλεσμα ήταν σημαντικό, αλλά ακόμα πιο σημαντικό ήταν ότι σε όλη τη διαδρομή ένιωθα ότι το έργο είναι σε σοβαρά χέρια.”</p>
+            <div class="person">
+              <div class="avatar">Ε</div>
+              <div><strong>Ελένη Κ.</strong><small>Ιδιοκτήτρια Airbnb</small></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <span class="eyebrow">Επόμενο βήμα</span>
+            <h2>Αν έχεις ακίνητο που θέλει ανακαίνιση ή σοβαρό φρεσκάρισμα, ξεκίνα με σωστή πρώτη εικόνα.</h2>
+            <p>
+              Δείξε μας το ακίνητο και θα σου πούμε καθαρά τι αξίζει να γίνει, τι όχι, και πώς μπορεί να τρέξει όλο αυτό χωρίς να γίνει καθημερινό βάρος για εσένα.
+            </p>
+            <div class="hero-actions" style="margin-top:20px;">
+              <a class="btn btn-primary" href="tel:+3069XXXXXXXX">Κάλεσέ μας τώρα</a>
+              <a class="btn btn-secondary" href="mailto:info@stasigoura.gr">Στείλε email</a>
+            </div>
+          </div>
+
+          <div class="cta-panel">
+            <h3>Τι κερδίζεις από την πρώτη συζήτηση</h3>
+            <div class="cta-list">
+              <div class="cta-line">
+                <div class="dot"></div>
+                <div>
+                  <strong>Καθαρή πρώτη κατεύθυνση</strong><br>
+                  <span style="color:var(--muted)">Τι αξίζει να γίνει και τι όχι.</span>
+                </div>
+              </div>
+              <div class="cta-line">
+                <div class="dot"></div>
+                <div>
+                  <strong>Ρεαλιστικό εύρος κόστους</strong><br>
+                  <span style="color:var(--muted)">Όχι πρόχειρα νούμερα μόνο για εντύπωση.</span>
+                </div>
+              </div>
+              <div class="cta-line">
+                <div class="dot"></div>
+                <div>
+                  <strong>Σοβαρό επόμενο βήμα</strong><br>
+                  <span style="color:var(--muted)">Χωρίς σύγχυση και χωρίς θολές υποσχέσεις.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container footer">
+        <div>© <span id="year"></span> ΣΤΑ ΣΙΓΟΥΡΑ — Ανακαινίσεις με σιγουριά</div>
+        <div>Τηλέφωνο: 69XXXXXXXX · Email: info@stasigoura.gr</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Hero auto slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 4000);
+
+    // Before / After sliders
+    document.querySelectorAll('[data-ba]').forEach(function(box) {
+      const range = box.querySelector('.range');
+      const after = box.querySelector('.after');
+      const divider = box.querySelector('.divider');
+      const knob = box.querySelector('.knob');
+
+      function update(value) {
+        after.style.width = value + '%';
+        divider.style.left = value + '%';
+        knob.style.left = value + '%';
+      }
+
+      range.addEventListener('input', function(e) {
+        update(e.target.value);
+      });
+
+      update(range.value);
+    });
+
+    // Reveal on scroll
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.14 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Counter animation
+    const counters = document.querySelectorAll('.stat-number');
+    let countersStarted = false;
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !countersStarted) {
+          countersStarted = true;
+
+          counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            let current = 0;
+            const increment = Math.max(1, Math.ceil(target / 80));
+
+            const updateCounter = () => {
+              current += increment;
+              if (current >= target) {
+                counter.textContent = target;
+              } else {
+                counter.textContent = current;
+                requestAnimationFrame(updateCounter);
+              }
+            };
+
+            updateCounter();
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    const statsSection = document.querySelector('#stats');
+    counterObserver.observe(statsSection);
+  </script>
 </body>
 </html>
